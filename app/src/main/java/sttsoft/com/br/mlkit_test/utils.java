@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.graphics.pdf.PdfRenderer;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
@@ -63,7 +64,6 @@ public class utils {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public static ArrayList<Bitmap> pdfToBitmap(Context context, File pdfFile) {
         ArrayList<Bitmap> bitmaps = new ArrayList<>();
 
@@ -75,8 +75,8 @@ public class utils {
             for (int i = 0; i < pageCount; i++) {
                 PdfRenderer.Page page = renderer.openPage(i);
 
-                int width = context.getResources().getDisplayMetrics().densityDpi * page.getWidth() / 72 ;
-                int height = context.getResources().getDisplayMetrics().densityDpi * page.getHeight() / 72;
+                int width = context.getResources().getDisplayMetrics().densityDpi * page.getWidth() / 120 ;
+                int height = context.getResources().getDisplayMetrics().densityDpi * page.getHeight() / 120;
                 bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 
                 page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_PRINT);

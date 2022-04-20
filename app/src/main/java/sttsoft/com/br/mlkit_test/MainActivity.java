@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     private void clickRead() {
         try {
 
